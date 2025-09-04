@@ -6,6 +6,19 @@ export default defineNuxtConfig({
     // erlaubt Pages als JSX/TSX
     jsx: true
   },
+   app: {
+    baseURL: '/<REPO-NAME>/' // für athaeck.github.io → '/'
+  },
+ router: {
+    options: {
+      trailingSlash: true
+    }
+  },
+    nitro: {
+    prerender: {
+      routes: ['/de/', '/en/']
+    }
+  },
     i18n: {
         defaultLocale: 'de',
     locales: [
