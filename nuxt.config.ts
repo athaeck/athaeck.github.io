@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     jsx: true
   },
    app: {
-     baseURL: process.env.NODE_ENV === 'production' ? '/<REPO-NAME>/' : '/'
+       app: { baseURL: '/' },
   },
  router: {
     options: {
