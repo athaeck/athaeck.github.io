@@ -6,10 +6,19 @@ export default defineNuxtConfig({
     // erlaubt Pages als JSX/TSX
     jsx: true
   },
+    i18n: {
+        defaultLocale: 'de',
+    locales: [
+      { code: 'de', name: 'German', file: 'de.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ],
+      strategy: "prefix_and_default", 
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/test-utils',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxtjs/i18n'
   ]
 })
