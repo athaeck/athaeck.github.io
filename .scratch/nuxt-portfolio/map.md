@@ -28,6 +28,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - [Impressum und Datenschutz für ein privates Portfolio](issues/05-impressum-datenschutz-fakten.md): Impressum (mind. § 18 Abs. 1 MStV) und Datenschutzerklärung nötig; Wohnadresse vermeidbar über eine Drittanschrift mit Zustellungsbevollmächtigung; Postfach reicht nicht.
 - [Nuxt-Stack-Fakten (Stand Nov 2026)](issues/03-nuxt-stack-fakten.md): Nuxt 4.6.4 / nitropack 2.13.6; i18n `prefix_except_default` mit DE-Default bestätigt; Content mit Collection pro Sprache und `native`-SQLite; IPX zur Laufzeit (sharp im Image); `routeRules`-Header greifen auf `public/`, ADR-0001 hält.
 - [Unity-WebGL-Embed-Fakten](issues/04-unity-webgl-embed-fakten.md): Header-Anforderungen und Mobil-Support geklärt; COOP/COEP nur bei Threads; einfachster Weg: Unity unkomprimiert + Nitro `compressPublicAssets` (Build-Test steht aus).
+- [Inhaltsinventar](issues/07-inhaltsinventar.md): Inventar freigegeben ([content-inventory.md](content-inventory.md)); 7 Featured inkl. ONA TECH, 7 im Archiv, dazu Ready Prepper One als WIP; Rollen in Teamprojekten geklärt; 5 Projects schon im Web.
 
 ## Not yet specified
 
@@ -37,7 +38,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - **Embed-UX:** Poster, Click-to-play, Fallback auf Mobil, Ladeanzeige. Hängt an der Embed-Architektur.
 - **Teststrategie** über Lint und Typecheck hinaus. Hängt am Tech-Stack.
 - **Übersetzungs-Workflow im Detail:** Ausgangssprache je Inhalt, Review-Schritt. Hängt am Inhaltsmodell.
-- **Cutover:** DNS für athaeck.de, GitHub Pages abschalten, Weiterleitung von athaeck.github.io, Repo-Umzug und Umbenennung in Forgejo. Hängt an der Pipeline.
+- **Cutover:** DNS für athaeck.de, GitHub Pages abschalten, Weiterleitung von athaeck.github.io, Repo-Umzug und Umbenennung in Forgejo. Die Web-Builds unter `athaeck.github.io/A-fraction-of-time/` und `athaeck.github.io/VisualNovel/` dürfen dabei nicht brechen, oder sie ziehen mit um. Hängt an der Pipeline.
 - **Spec zusammenführen:** letzter Schritt, sobald keine Tickets mehr offen sind.
 
 ## Out of scope
