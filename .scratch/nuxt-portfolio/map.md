@@ -29,6 +29,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - [Nuxt-Stack-Fakten (Stand Nov 2026)](issues/03-nuxt-stack-fakten.md): Nuxt 4.6.4 / nitropack 2.13.6; i18n `prefix_except_default` mit DE-Default bestätigt; Content mit Collection pro Sprache und `native`-SQLite; IPX zur Laufzeit (sharp im Image); `routeRules`-Header greifen auf `public/`, ADR-0001 hält.
 - [Unity-WebGL-Embed-Fakten](issues/04-unity-webgl-embed-fakten.md): Header-Anforderungen und Mobil-Support geklärt; COOP/COEP nur bei Threads; einfachster Weg: Unity unkomprimiert + Nitro `compressPublicAssets` (Build-Test steht aus).
 - [Inhaltsinventar](issues/07-inhaltsinventar.md): Inventar freigegeben ([content-inventory.md](content-inventory.md)); 7 Featured inkl. ONA TECH, 7 im Archiv, dazu Ready Prepper One als WIP; Rollen in Teamprojekten geklärt; 5 Projects schon im Web.
+- [Inhaltsmodell](issues/09-inhaltsmodell.md): Typen Project, CV entry, Skill, Profile, Page. Fakten liegen in einer geteilten YAML-Datei, Texte in Markdown pro Sprache ([ADR-0002](../../docs/adr/0002-shared-facts-and-per-language-text-files.md)). `kind` und `genre` ersetzen die Kategorien. Projects haben Phasen, Skills zeigen Belege statt Balken, Featured ist eine geordnete Liste im Profile. Ready Prepper One wird kein Project, sondern die „Aktuell“-Zeile im Profile.
 
 ## Not yet specified
 
@@ -37,7 +38,6 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - **Layout von Project page und CV-Seite** inkl. Print-Stylesheet. Hängt an Seitenstruktur und Design-Richtung.
 - **Embed-UX:** Poster, Click-to-play, Fallback auf Mobil, Ladeanzeige. Hängt an der Embed-Architektur.
 - **Teststrategie** über Lint und Typecheck hinaus. Hängt am Tech-Stack.
-- **Übersetzungs-Workflow im Detail:** Ausgangssprache je Inhalt, Review-Schritt. Hängt am Inhaltsmodell.
 - **Cutover:** DNS für athaeck.de, GitHub Pages abschalten, Weiterleitung von athaeck.github.io, Repo-Umzug und Umbenennung in Forgejo. Die Web-Builds unter `athaeck.github.io/A-fraction-of-time/` und `athaeck.github.io/VisualNovel/` dürfen dabei nicht brechen, oder sie ziehen mit um. Hängt an der Pipeline.
 - **Spec zusammenführen:** letzter Schritt, sobald keine Tickets mehr offen sind.
 
