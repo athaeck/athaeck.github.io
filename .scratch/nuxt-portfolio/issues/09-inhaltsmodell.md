@@ -43,7 +43,7 @@ content/
 |---|---|---|---|
 | `kind` | geteilt | game · research · tool · film · asset (ersetzt die 8 alten Kategorien) | ✓ |
 | `skills` | geteilt | Skill-Slugs, inkl. Plattformen (AR, VR, Mobile, Web, Desktop) | ✓ |
-| `links` | geteilt | Liste `{type, url}`, Typen repo · paper · play · website · viewer · video · store · download; Beschriftung aus UI-Texten | |
+| `links` | geteilt | Liste `{type, url}`, Typen repo · paper · play · website · viewer · video · devlog · store · download; Beschriftung aus UI-Texten | |
 | `cover` | geteilt | Bild | ✓ |
 | `embed` | geteilt | Form klärt die [Embed-Architektur](13-embed-architektur.md) | |
 | `title` | übersetzt | Text | ✓ |
@@ -52,12 +52,14 @@ content/
 | `coverAlt` | übersetzt | Text | ✓ |
 | `phases` | übersetzt | Liste ≥1 `{start, end, context, teamSize, role}`; der Zeitraum des Projects ergibt sich aus erster und letzter Phase | ✓ |
 | `contributions` | übersetzt | Liste von Sätzen | |
+| `learnings` | übersetzt | Liste von Sätzen: was aus dem Project gelernt wurde | |
 | `gallery` | übersetzt | Liste `{file, alt, caption}`, Bild oder Video | |
 | Body | übersetzt | Markdown | |
 
 - Eine Karte zeigt Kind, Plattformen und Genre, z. B. *Tool · AR · Web · L-System-Pflanzengenerator* (Three.LS).
 - Auszeichnungen eines Projects werden aus den achievements abgeleitet, die auf das Project verweisen.
 - Featured und Archiv nutzen dieselben Felder.
+- Nachtrag vom 2026-11-14 aus der [Vorlagen-Sichtung](08-vorlagen-sichtung.md): `learnings` und der Link-Typ `devlog` sind neu. An jedem Project soll stehen, was daraus gelernt wurde. `learnings` ist wie `contributions` aufgebaut.
 - Ready Prepper One ist **kein** Project, sondern die Zeile `now` im Profile, bis es Inhalt hat.
 
 **CV entry** (Strapi: Collection Type mit i18n)
