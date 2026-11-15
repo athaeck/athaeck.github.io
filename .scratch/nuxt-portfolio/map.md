@@ -31,11 +31,12 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - [Inhaltsinventar](issues/07-inhaltsinventar.md): Inventar freigegeben ([content-inventory.md](content-inventory.md)); 7 Featured inkl. ONA TECH, 7 im Archiv, dazu Ready Prepper One als WIP; Rollen in Teamprojekten geklärt; 5 Projects schon im Web.
 - [Inhaltsmodell](issues/09-inhaltsmodell.md): Typen Project, CV entry, Skill, Profile, Page. Fakten liegen in einer geteilten YAML-Datei, Texte in Markdown pro Sprache ([ADR-0002](../../docs/adr/0002-shared-facts-and-per-language-text-files.md)). `kind` und `genre` ersetzen die Kategorien. Projects haben Phasen und Learnings, Skills zeigen Belege statt Balken, Featured ist eine geordnete Liste im Profile. Ready Prepper One wird kein Project, sondern die „Aktuell“-Zeile im Profile.
 - [Vorlagen-Sichtung](issues/08-vorlagen-sichtung.md): Funde des Owners liegen in [vorlagen-sichtung.md](vorlagen-sichtung.md). Der Owner wünscht zwei Modi: am Desktop eine Spielwelt mit Missionen, am Handy eine App. Das steht in Spannung zu (b) und wird in [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md) geklärt. Learnings und Devlog-Links ergänzen das Inhaltsmodell; Exo ist die Wunschschrift.
+- [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md): Die Inhaltsseite bleibt auf allen Geräten kanonisch, (b) gilt weiter. Darüber liegt ein optionaler Spielmodus nur am Desktop (Unity WebGL) mit eigenen Inhalten; er ist nur über feste URLs und die Sprache an die Seite gekoppelt. Am Handy gibt es keinen eigenen Modus und keine PWA. Der Signature-Moment weist auf den Spielmodus hin. Das Spiel selbst ist Phase 2, die Seite startet ohne.
 
 ## Not yet specified
 
 - **Visuelle Identität:** Farben, Typografie, Dark/Light, Motion. Der Owner wünscht Exo (OFL, variabel); Orbitron ist nicht gesetzt. Der Hell-Dunkel-Kontrast von watson.la gefällt. Wird schärfer nach dem Design-Prototyp.
-- **Technik für den Signature-Moment oder Spielmodus:** Unity WebGL, three.js/TresJS, GSAP oder nur CSS? Hängt am Spielmodus-Ticket und am Prototyp.
+- **Technik für den Signature-Moment:** CSS, Canvas 2D, three.js/TresJS oder GSAP? Hängt am Prototyp. Der Spielmodus ist auf Unity WebGL festgelegt.
 - **Layout von Project page und CV-Seite** inkl. Print-Stylesheet. Hängt an Seitenstruktur und Design-Richtung.
 - **Embed-UX:** Poster, Click-to-play, Fallback auf Mobil, Ladeanzeige. Hängt an der Embed-Architektur.
 - **Teststrategie** über Lint und Typecheck hinaus. Hängt am Tech-Stack.
@@ -53,6 +54,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - **Tracking und Analytics** (z. B. Umami auf eigener Infra).
 - **Blog, Testimonials und Clients** als Sektionen.
 - **Einbau eines konkreten Unity-Spiels.** Die Embed-Architektur ist in scope.
+- **Das Spiel im Spielmodus:** Welt, Fernrohr-Mechanik, Inhalte und Build sind ein eigener Effort nach dem ersten Rebuild. Die Spec legt nur den Rahmen fest. Die Konzeptnotiz steht in [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md).
 - **CV-PDF aus den Seiteninhalten generieren.**
 
 **Nicht Teil dieses Projekts:** Aufbau der Infrastruktur selbst (Forgejo, Coolify, Registry). Das ist ein eigenes Vorhaben des Owners.

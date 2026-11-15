@@ -12,3 +12,5 @@ Blocked by: 04, 16
 - **Grenzen:** Größenbudget, und was passiert ohne WebGL?
 
 Grundlage: [Unity-WebGL-Embed-Fakten](04-unity-webgl-embed-fakten.md). Dazu die vorhandenen Web-Builds aus dem [Inhaltsinventar](../content-inventory.md), §4: A Fraction of Time als Unity WebGL auf GitHub Pages, die Workbench als Sketchfab-Viewer. Embed-UX im Detail (Poster, Click-to-play) bleibt Fog.
+
+Später soll die Architektur auch den [Spielmodus](18-spielmodus-und-mobil-modus.md) tragen: einen größeren Unity-Build auf eigener Route, nicht in einer Project page, mit Startbildschirm und Laden erst nach einem Klick.

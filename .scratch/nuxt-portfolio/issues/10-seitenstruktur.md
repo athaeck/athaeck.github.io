@@ -15,3 +15,5 @@ Welche Seiten und Routen gibt es, und wie führt die Navigation?
 - Was macht der Sprachumschalter auf einer Seite, die es in der anderen Sprache nicht gibt?
 
 Aus dem [Inhaltsmodell](09-inhaltsmodell.md) brauchen außerdem einen Platz: die Services, die „Aktuell“-Zeile (Ready Prepper One), die Skills mit ihren Belegen und das Archiv. Das Inhaltsmodell kennt dafür kein Filterfeld außer `kind` und den Plattform-Skills.
+
+Aus [Spielmodus und Mobil-Modus](18-spielmodus-und-mobil-modus.md) brauchen einen Platz: der Einstieg in den Spielmodus auf der Home und in der Navigation (sichtbar erst, wenn das Spiel live ist), der Hinweis am Handy und eine Spiel-Route pro Sprache. Das Spiel verlinkt auf Project pages, CV und Kontakt. Deren URLs müssen deshalb stabil bleiben.

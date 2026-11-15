@@ -42,6 +42,16 @@ _Avoid_: Stage, iteration, version
 A technology, method or platform (e.g. Unity, Scrum, AR) the owner backs with Projects or CV entries.
 _Avoid_: Competence, technology
 
+### Site
+
+**Game mode**:
+An optional, desktop-only way through the site's content as a playable world; it sits on top of the site's pages and never replaces them.
+_Avoid_: Game world, playable portfolio, mobile mode
+
+**Signature moment**:
+The one playful moment with game character on the site's pages; it works without the Game mode and points towards it.
+_Avoid_: Easter egg, gimmick, hero animation
+
 ### Person
 
 **CV**:

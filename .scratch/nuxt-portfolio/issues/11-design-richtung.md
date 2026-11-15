@@ -9,3 +9,5 @@ Blocked by: 08, 10, 18
 Wie sieht die Seite aus und wie fühlt sie sich an? Was ist der **eine** Signature-Moment mit Game-Charakter, der sie abhebt, ohne dass Recruiter länger als 10 s für das Wichtigste brauchen?
 
 Vorgehen: 2–3 grobe Wegwerf-Varianten von Home und einer Project page, gebaut aus den Referenzen der [Vorlagen-Sichtung](08-vorlagen-sichtung.md) und der [Seitenstruktur und Navigation](10-seitenstruktur.md). Der Owner reagiert darauf, eine Richtung wird gewählt. Das Logo bleibt als Marke.
+
+Vorgaben aus [Spielmodus und Mobil-Modus](18-spielmodus-und-mobil-modus.md): Der Signature-Moment funktioniert ohne Spielmodus und weist thematisch auf ihn hin. Kandidaten sind eine Fernrohr-Linse über dem Hero und ein Zeitreise-Übergang wie in A Fraction of Time. Am Handy soll sich die Seite wie eine App anfühlen. Der Buch-Rahmen von library.jjangik.kr ist keine Variante mehr.
