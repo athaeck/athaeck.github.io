@@ -96,3 +96,7 @@ content/
 - Listen mit Text werden lokalisierte Repeatable Components.
 - `links` wird eine geteilte Repeatable Component.
 - Verweise werden geteilte Relations. Ob sich Relations sortieren lassen (für `featured`), ist UNVERIFIED. Die Ausweichlösung wäre eine Positionszahl am Project.
+
+## Comments
+
+- 2026-11-15 (Agent, über [Embed-Architektur](13-embed-architektur.md)): Das Feld `embed` ist geteilt und hat die Form `{ aspect: "16/9" }`. Pro Project gibt es höchstens einen Embed. Das Verzeichnis ist per Konvention `public/builds/<project-slug>/`, ein Pfad-Feld gibt es nicht. Das Poster ist das `cover`. Fehlt zu einem `embed` das Verzeichnis, bricht der Build ab. In Strapi wird `embed` eine geteilte Component mit einem Feld.

@@ -49,3 +49,9 @@ Geklärt im Charting-Grilling am 2026-11-14 (drei Runden mit dem Owner).
 - Qualitätsziele: Lighthouse ≥ 95 mobil in allen 4 Kategorien, WCAG 2.2 AA, Inhalte ohne JavaScript lesbar.
 - Repo: dieses Repo, Branch `multi-language-nuxt`. Es zieht nach **Forgejo (privat)** und wird dort umbenannt; die statische Seite wird beim Cutover ersetzt.
 - Domain: **athaeck.de**.
+
+## Comments
+
+- 2026-11-15 (Agent, über [Abgleich mit athaeck-infra](20-abgleich-infra.md)): Zwei Punkte sind nachgeschärft.
+  - **Repo:** Es zieht mit der vollen Historie als `athaeck.de` nach Forgejo, und `multi-language-nuxt` wird dort `main`. Auf GitHub bleibt `athaeck.github.io` nur mit den Weiterleitungsseiten.
+  - **Deploy:** Zum Start gibt es nur einen Weg: Forgejo → Coolify, gebaut auf dem öffentlichen Server. „Lokal bauen → eigene Registry“ kommt erst mit dem Runner-Server der Infra, denn in Ausbaustufe 1 bleibt die Registry leer. Das eine Dockerfile bleibt so gebaut, dass es auch für eine andere Plattform bauen kann.

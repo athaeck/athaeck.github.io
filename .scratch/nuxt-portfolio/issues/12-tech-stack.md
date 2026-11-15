@@ -86,3 +86,13 @@ form-action 'self'; object-src 'none'
 - [Embed-Architektur](13-embed-architektur.md): Das CSP erlaubt `'wasm-unsafe-eval'`, aber keine Fremd-Origins. Ein Embed von einer Subdomain bräuchte eine Ausnahme bei `script-src` und `connect-src`. Header gehen nur per Verzeichnis.
 - Nebel **Teststrategie:** Der Tech-Stack steht. Die Strategie kann jetzt ein Ticket werden.
 - Das Glossar bleibt unverändert, es kamen keine neuen Fachbegriffe dazu.
+
+## Comments
+
+- 2026-11-15 (Agent, über [Embed-Architektur](13-embed-architektur.md)): Drei Nachträge.
+  - Die restriktive Permissions-Policy muss `fullscreen=(self)` stehen lassen, weil Embeds im iframe mit `allow="fullscreen"` laufen.
+  - `/builds/**` bekommt per `routeRules` ein eigenes CSP: das der Seite plus genau das, was der Unity-Loader nachweislich braucht. Dazu kommen `X-Robots-Tag: noindex`, `immutable` auf `/builds/*/Build/**` und `no-cache` für den Rest.
+  - Prüfpunkt 4 („Den Unity-Loader prüft die Embed-Architektur“) verweist jetzt auf die Prüfpunkte in [Embed-Architektur](13-embed-architektur.md). Sie laufen beim ersten Unity-Web-build, nicht beim ersten Build der Seite, denn die Seite startet ohne Embed.
+- 2026-11-15 (Agent, über [Abgleich mit athaeck-infra](20-abgleich-infra.md)): Zwei Nachträge.
+  - Das Trailing-Slash-Plugin hat eine feste Präfixliste: `/builds/` und die Pfadnamen der Legacy sites unter `public/<alter-name>/`. Für diese Präfixe erzwingt es die Form **mit** Slash, z. B. `/Chess-Game` → 301 `/Chess-Game/`. Ohne Slash liefert Nitro die `index.html` zwar aus, aber die relativen Pfade darin brechen. Überall sonst entfernt das Plugin den Slash wie bisher. Umbenannte Altpfade sind `routeRules`-Redirects.
+  - Die Umleitung von `www` macht Coolify („Redirect to non-www“), nicht die App.

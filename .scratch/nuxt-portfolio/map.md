@@ -4,7 +4,7 @@ Label: wayfinder:map
 
 ## Destination
 
-Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/adr/` + `GLOSSARY.md`) für das mehrsprachige (DE/EN) Nuxt-Portfolio auf **athaeck.de**: ein Docker-Image mit `/health`, deploybar über Forgejo → Coolify oder lokalen Build → eigene Registry. Die Map ist am Ziel, wenn vor dem Bauen nichts mehr zu entscheiden ist.
+Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/adr/` + `GLOSSARY.md`) für das mehrsprachige (DE/EN) Nuxt-Portfolio auf **athaeck.de**: ein Docker-Image mit `/health`, deploybar über Forgejo → Coolify (gebaut auf dem öffentlichen Server); ein Image aus der eigenen Registry kommt erst mit dem Runner-Server der Infra. Die Map ist am Ziel, wenn vor dem Bauen nichts mehr zu entscheiden ist.
 
 ## Notes
 
@@ -17,6 +17,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - **Planen, nicht bauen:** Tickets treffen Entscheidungen und liefern nichts aus. Der Bau ist ein eigener Effort nach der Spec.
 - **Research-Ablage:** lokale `research/<name>`-Branches, **nicht pushen** (`origin` ist noch das öffentliche GitHub; das private Forgejo folgt).
 - **Sprache:** Map und Tickets auf Deutsch; Glossar, ADRs und Spec auf Englisch.
+- **Infra:** Server, Build, DNS und Umzug plant `E:/Projekte/athaeck/athaeck-infra` (Spec Ausbaustufe 1). Dort gilt der Infra-Plan; Änderungen daran gehen nur als Kommentar-Vorschlag in die Infra-Tickets.
 
 ## Decisions so far
 
@@ -37,12 +38,13 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - [Layout der übrigen Seiten](issues/19-layout-uebrige-seiten.md): Projects (Featured-Raster, Archiv als Zeitleiste), Lebenslauf (Kopf mit PDF-Formular, Erfahrung, Engagement, Ausbildung, Auszeichnungen, Skills mit Belegen als Popover; Print-Stylesheet) und Über mich (Bio, Services, Interessen), je Kategorie ein Screen. Die Grundschule entfällt.
 - [Build-Spike](issues/16-build-spike.md): Läuft auf `node:24-alpine`, read-only, ohne natives SQLite, wenn die Content-DB `:memory:` ist. Der Prerender schreibt `/_ipx`-Varianten, IPX/sharp bleiben zur Laufzeit; Build im Container. Fix B bestätigt; neu: wörtliche `.br` liefert Nitro mit korrektem Header (Fix C). Route-Muster greifen nur per Verzeichnis. `/mail` als Server-Route `mail.ts` mit `prerender: false` und leerem Body, nicht per `routeRules` (Adresse landet sonst im Client-JS). CV-POST mit 200/303 belegt. Trailing Slash per Plugin auf 301. Image ohne Embeds rund 208 MB.
 - [Tech-Stack](issues/12-tech-stack.md): Node 26 mit npm, ohne Corepack. Nuxt 4.6 mit den Standard-Defaults und den Modulen i18n, Content, Image, Fonts und ESLint. Bilder über `ipxStatic`, also ohne IPX zur Laufzeit. Exo kommt über den Provider `npm`. Plain CSS ([ADR-0003](../../docs/adr/0003-hand-written-css-no-utility-framework.md)); Icons als eigene SVGs; keine 3D- und keine Motion-Library. ESLint mit stylistic statt Prettier; `typescript ~6.0.3` ist gepinnt, weil TS 7 vue-tsc bricht. Security-Header und ein CSP auf die eigene Origin per `routeRules`, ohne `nuxt-security`. Vier Prüfpunkte für den ersten Build.
+- [Embed-Architektur](issues/13-embed-architektur.md): Neuer Oberbegriff *Web build* (jede Engine, selbst gehostet), *Embed* ist ein Web build in einer Project page; Sketchfab und fremde Demos bleiben Links. Unity-„Brotli“-Release-Builds liegen in Git unter `public/builds/<slug>/`, Nitro liefert die `.br` direkt aus, gezeigt im same-origin iframe erst nach Klick ([ADR-0004](../../docs/adr/0004-web-builds-as-prebrotli-files-in-same-origin-iframes.md)). Budget 50 MB pro Embed, 100 MB Game mode, als Abbruch im Build; `embed: { aspect }`, höchstens einer pro Project. Vertrag: `?lang=`, Links ins Top-Fenster, Ausstiegsleiste außerhalb des iframes. Unity-6-Loader und CSP sind Prüfpunkte beim ersten Unity-Build. Start ohne Embed, A Fraction of Time kommt als erster danach.
+- [Abgleich mit athaeck-infra](issues/20-abgleich-infra.md): Nitro `node-server` bleibt, weil CMS-Inhalte zur Laufzeit erscheinen sollen und Phase 2 Endpunkte braucht; nginx wurde gespiked und verworfen. Gebaut wird auf dem CAX11 nach infra-22 (Spike: Spitze 1,3 GB); Swap und Messung gehen als Vorschlag an infra-18. Das Repo zieht als `athaeck.de` nach Forgejo. Kein LFS. Neuer Begriff *Legacy site*: Altseiten liegen unter `public/<alter-name>/`, das Plugin erzwingt dort den Slash. `www` leitet Coolify um. Den Cutover führt die Infra durch (infra-18/19).
 
 ## Not yet specified
 
-- **Embed-UX:** Poster, Click-to-play, Fallback auf Mobil, Ladeanzeige. Hängt an der Embed-Architektur.
+- **Embed-UX:** Poster, Click-to-play, Fallback auf Mobil, Ladeanzeige. Entblockt durch die [Embed-Architektur](issues/13-embed-architektur.md). Fest steht: Das Poster ist das `cover`, die Fläche hat `aspect`, geladen wird erst nach Klick, und den Button gibt es nur mit `embed` und passender Fähigkeit.
 - **Teststrategie** über Lint und Typecheck hinaus. Hängt am Tech-Stack.
-- **Cutover:** DNS für athaeck.de, GitHub Pages abschalten, Weiterleitung von athaeck.github.io, Repo-Umzug und Umbenennung in Forgejo. Die Web-Builds unter `athaeck.github.io/A-fraction-of-time/` und `athaeck.github.io/VisualNovel/` dürfen dabei nicht brechen, oder sie ziehen mit um. Stand 2026-11-15 sind beide schon offline (s. [Build-Spike](issues/16-build-spike.md)). Hängt an der Pipeline.
 - **Spec zusammenführen:** letzter Schritt, sobald keine Tickets mehr offen sind.
 
 ## Out of scope
@@ -55,7 +57,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - **SEO-Ausbau:** Sitemap, OG-Bilder, JSON-LD. Die Basics (lang, hreflang, Title, Description) sind Teil des Rebuilds.
 - **Tracking und Analytics** (z. B. Umami auf eigener Infra).
 - **Blog, Testimonials und Clients** als Sektionen.
-- **Einbau eines konkreten Unity-Spiels.** Die Embed-Architektur ist in scope.
+- **Einbau konkreter Embeds.** Die Seite startet ohne Embed; A Fraction of Time wird der erste nach dem Launch. Die Embed-Architektur ist in scope.
 - **Das Spiel im Spielmodus:** Welt, Fernrohr-Mechanik, Inhalte und Build sind ein eigener Effort nach dem ersten Rebuild. Die Spec legt nur den Rahmen fest. Die Konzeptnotiz steht in [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md). Auch der Name der Spiel-Route samt Nav-Beschriftung gehört dazu; die Regeln dafür stehen in [Seitenstruktur und Navigation](issues/10-seitenstruktur.md).
 - **CV-PDF aus den Seiteninhalten generieren.**
 

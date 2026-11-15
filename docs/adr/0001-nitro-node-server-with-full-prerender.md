@@ -1,3 +1,5 @@
 # Nitro node-server with full prerender, self-hosted in Docker
 
 The site leaves GitHub Pages for the owner's own infrastructure (Forgejo → Coolify, or local build → own registry), shipped as one Docker image. Every page is prerendered via `routeRules`, yet the image runs Nitro's `node-server` instead of a plain static server (nginx/Caddy): it gives a real `/health` server route, per-path response headers for Unity WebGL Embeds (`Content-Encoding` for `.br`/`.gz` builds) from the same config, and a runtime to hook a self-hosted Strapi into later. We accept a larger image than a static server would need.
+
+A static export (`nuxt generate`) served by nginx, as the infrastructure plan had assumed, was spiked on 2026-11-15. It handled every server duty and needed far less memory per download. We rejected it because headless-CMS content should appear at runtime without a rebuild (draft preview, instant publishing), and phase 2 needs server endpoints such as a contact form ([Abgleich mit athaeck-infra](../../.scratch/nuxt-portfolio/issues/20-abgleich-infra.md)).

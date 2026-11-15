@@ -14,8 +14,12 @@ _Avoid_: Portfolio item, work, reference
 The detail page of one Project: role, tech, problem, media, links; the place an Embed lives.
 _Avoid_: Case study, detail view
 
+**Web build**:
+An interactive build (scene or game) made for the site, hosted by it and running in the browser, whatever engine made it (Unity, FUDGE, three.js); it is shown either as an Embed or as the Game mode. A third-party viewer, a live demo hosted elsewhere or a Legacy site is not a Web build; a Project only links to it.
+_Avoid_: WebGL build, player, live demo
+
 **Embed**:
-An interactive Unity WebGL build (scene or game) running inside a Project page.
+A Web build running inside a Project page.
 _Avoid_: Demo, iframe game, 3D scene
 
 **Featured project**:
@@ -51,6 +55,10 @@ _Avoid_: Game world, playable portfolio, mobile mode
 **Signature moment**:
 The one playful moment with game character on the site's pages; it works without the Game mode and points towards it.
 _Avoid_: Easter egg, gimmick, hero animation
+
+**Legacy site**:
+A page from the owner's GitHub Pages era that the site serves unchanged under its old path name; it is not content of the site and has no Project page of its own. When its Project gets an Embed, the old path redirects to the Project page.
+_Avoid_: Archive (that is the compact Project list), old page
 
 ### Person
 
