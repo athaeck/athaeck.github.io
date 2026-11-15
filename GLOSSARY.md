@@ -93,3 +93,13 @@ _Avoid_: About (that is a page), vCard
 **Service**:
 One discipline the owner works in, e.g. Game Programming or Narrative Design; visitors may approach the owner about it, but the site sells no paid work.
 _Avoid_: "What I'm doing"
+
+### Editing
+
+**Source language**:
+The language every text of the site is written in first, German; the English text is its translation and follows every change in meaning.
+_Avoid_: Original language, master language
+
+**Unreviewed text**:
+A text written by AI, as a draft or a translation, that the owner has not read yet; it never goes live.
+_Avoid_: Draft, machine translation

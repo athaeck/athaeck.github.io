@@ -15,3 +15,7 @@ Welche Prüfungen kommen über Lint, Typecheck und den Prerender (bricht bei tot
 - Ort: im Gate des Build-Stages (ohne Browser, RAM des CAX11), lokal oder als Teil der README-Prüfung.
 
 Grundlage: [Tech-Stack](12-tech-stack.md) und [Build- und Deploy-Pipeline](15-build-deploy-pipeline.md).
+
+## Comments
+
+- 2026-11-15 (Agent, über [Übersetzungs-Workflow](17-uebersetzungs-workflow.md)): Es gibt zwei neue Inhaltsprüfungen, die Unit-Tests brauchen könnten: den `unreviewed`-Marker und den Listenabgleich (gleich viele Einträge und gleiche Fakten in `phases`, `gallery`, `contributions`, `learnings`, `services` und `languages`).

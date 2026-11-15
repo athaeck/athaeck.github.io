@@ -142,3 +142,4 @@ Geklärt im Grilling am 2026-11-15 (zwei Runden mit dem Owner). Neuer Glossar-Be
 - 2026-11-15 (Agent, über [Impressum-Lösung](14-impressum-loesung.md)): Zwei Nachträge.
   - **Adresse auf den Rechtsseiten:** Impressum und Datenschutz zeigen die E-Mail-Adresse für Menschen lesbar, ohne JavaScript. Im Markup steht sie aber nicht im Klartext: Ein Störtext mit CSS `display:none` steht mitten in der Adresse. Grund: § 5 DDG verlangt die Adresse, ein Link reicht nicht. Der Footer bleibt, wie er ist.
   - **`noindex`:** Die vier Rechtsseiten bekommen `noindex` und stehen nicht in der Sitemap. Sie bleiben über den Footer auf jeder Seite erreichbar.
+- 2026-11-15 (Agent, über [Übersetzungs-Workflow](17-uebersetzungs-workflow.md)): Die Build-Regel wird verschärft zu „beide Sprachen, geprüft, oder kein Release“. Eine Sprachdatei mit `unreviewed: true` zählt wie eine fehlende.

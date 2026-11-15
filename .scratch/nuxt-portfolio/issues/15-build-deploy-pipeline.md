@@ -119,3 +119,4 @@ services:
   - **Cross-Build:** Der Build-Stage baut mit `FROM --platform=$BUILDPLATFORM`. Ein späterer x86-Runner (CX23) kann so ohne Emulation für `linux/arm64` bauen. Im Spike lagen mit `ipxStatic` weder `*.node` noch sharp unter `.output/server`. Ob das auf einem echten Arm-Server läuft, ist ungeprüft.
   - **RAM:** Im Spike lag die Spitze von `nuxt build` bei 1,41 GB. Die Schritte laufen nacheinander, es zählt also das Maximum. Swap auf dem CAX11 und eine Messung mit dem echten Build gehen als Vorschlag an infra-18.
   - **`www`:** Coolifys „Redirect to non-www“ an der Domain. Dafür stehen beide Hostnamen in den Domains.
+- 2026-11-15 (Agent, über [Übersetzungs-Workflow](17-uebersetzungs-workflow.md)): Zu den Inhaltsprüfungen in `npm run build` kommen zwei hinzu. Ein `unreviewed`-Marker in einer Sprachdatei bricht ab, ebenso der Listenabgleich: Listen mit Text müssen in beiden Sprachen gleich viele Einträge und gleiche Fakten haben.
