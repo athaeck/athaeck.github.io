@@ -109,3 +109,8 @@ form-action 'self'; object-src 'none'
   - **Neue Prüfpunkte beim ersten Build:**
     - Die Konsole zeigt keine CSP-Fehler, bei Zustimmung, bei Ablehnung und im GTM-Preview.
     - Lighthouse mobil ohne Zustimmung.
+- 2026-11-16 (Agent, über [SEO zum Start](25-seo-zum-start.md)): Die Modulliste bleibt, es kommt kein Nuxt-SEO-Modul dazu.
+  - Die Sitemap schreibt ein eigener Nitro-Hook (`prerender:route` und `prerender:done`).
+  - robots.txt liegt statisch in `public/`.
+  - JSON-LD ist handgeschrieben, die OG-Bilder kommen per ipxStatic.
+  - Der CSP bleibt, wie er ist: JSON-LD ist ein Datenblock, und die OG-Bilder liegen auf der eigenen Origin.

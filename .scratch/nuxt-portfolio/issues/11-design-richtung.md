@@ -46,3 +46,6 @@ Gewählt vom Owner am 2026-11-15 nach vier Runden: **Variante D „Zeitlinien ·
 - 2026-11-15 (Agent, über [Analytics und Consent](23-analytics-und-consent.md)): Das Consent banner kommt von Cookiebot und übernimmt den Stil der Variante D, also ihre Farben und Exo.
   - **Form:** eine Leiste unten, nicht modal, mit einer Ebene und zwei gleich großen, gleich gestalteten Buttons „Ablehnen“ und „Zulassen“.
   - **Offen:** Ob Premium Lite eigenes CSS erlaubt, prüft der Owner beim Buchen.
+- 2026-11-16 (Agent, über [SEO zum Start](25-seo-zum-start.md)): Zwei Nachträge für D.
+  - **Pfad statt „← Projects“:** Oben links im Teaser der Project page steht `Projekte / <Titel>`, als `<nav aria-label="Pfad"><ol>`. Das letzte Glied trägt `aria-current="page"`, die Schrift ist Exo in Versalien in der Größe der Kicker. Am Handy blendet CSS das letzte Glied aus, dort steht `← Projekte`.
+  - **OG-Standardbild:** Der Owner baut `public/og.png` (1200 × 630) von Hand aus D: Name, Joystick-Logo und Zeitlinien-Motiv, ohne Sprachtext.

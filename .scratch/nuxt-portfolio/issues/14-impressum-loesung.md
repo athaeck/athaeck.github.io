@@ -102,3 +102,6 @@ Web builds bekommen zum Start keinen Abschnitt; die Seite startet ohne Embed.
     - Google als Empfänger in den USA, auf Grundlage des DPF.
     - Der Widerruf über „Datenschutz-Einstellungen“.
   - **„Erklärung im selben Zug“** gilt auch für GTM: Wer einen Tag oder ein Cookie hinzufügt, ändert im selben Zug die Datenschutzerklärung und die Cookie-Liste.
+- 2026-11-16 (Agent, über [SEO zum Start](25-seo-zum-start.md)): Zwei Nachträge.
+  - **`noindex`:** Die Rechtsseiten setzen es nur als Meta-Tag (`useSeoMeta`), ohne `X-Robots-Tag`. Die Sitemap lässt sie anhand desselben Tags weg, und robots.txt sperrt sie nicht.
+  - **Datenschutzerklärung:** Sie bleibt unverändert. Search Console und Bing Webmaster Tools brauchen keinen Code auf der Seite, die Search Console wird per DNS-TXT bestätigt.

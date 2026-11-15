@@ -83,3 +83,10 @@ Geklärt im Grilling am 2026-11-15 (eine Runde mit dem Owner, alle Empfehlungen 
   - **Lighthouse ohne Zustimmung:** Lighthouse misst immer den Zustand vor der Wahl, also nur mit dem Cookiebot-Loader und dem Banner.
   - **CSP in der Konsole:** keine CSP-Fehler bei Zustimmung, bei Ablehnung und im GTM-Preview.
   - **Ort:** Die Teststrategie entscheidet, ob diese Prüfungen automatisch oder von Hand laufen und wo.
+- 2026-11-16 (Agent, über [SEO zum Start](25-seo-zum-start.md)): Drei Nachträge.
+  - **Audit:** `npm run audit` prüft zusätzlich Lighthouse SEO = 100 und die Sitemap: Jede URL liefert 200, trägt kein `noindex`, und ihr canonical ist sie selbst.
+  - **Von Hand zum Launch:**
+    - der Rich Results Test auf `/`, `/projekte` und einer Project page;
+    - der robots.txt-Bericht der Search Console;
+    - LinkedIn Post Inspector und die Vorschau bei X.
+  - **Schema:** Bei Videos in `gallery` sind `poster`, `date` und `caption` Pflicht. Für den Sitemap-Hook gibt es keinen Vitest.

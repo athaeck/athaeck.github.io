@@ -144,3 +144,6 @@ Geklärt im Grilling am 2026-11-15 (zwei Runden mit dem Owner). Neuer Glossar-Be
   - **`noindex`:** Die vier Rechtsseiten bekommen `noindex` und stehen nicht in der Sitemap. Sie bleiben über den Footer auf jeder Seite erreichbar.
 - 2026-11-15 (Agent, über [Übersetzungs-Workflow](17-uebersetzungs-workflow.md)): Die Build-Regel wird verschärft zu „beide Sprachen, geprüft, oder kein Release“. Eine Sprachdatei mit `unreviewed: true` zählt wie eine fehlende.
 - 2026-11-15 (Agent, über [Analytics und Consent](23-analytics-und-consent.md)): Der Footer jeder Seite bekommt neben Impressum und Datenschutz den Link „Datenschutz-Einstellungen“ (EN „Privacy settings“). Er öffnet das Consent banner erneut, damit man die Wahl ändern oder widerrufen kann. Derselbe Link steht in der Datenschutzerklärung.
+- 2026-11-16 (Agent, über [SEO zum Start](25-seo-zum-start.md)): Zwei Nachträge.
+  - **Pfad:** Auf der Project page ersetzt der sichtbare Pfad `Projekte / <Titel>` den Link „← Projects“. Am Handy steht nur `← Projekte`. Dazu gibt es eine `BreadcrumbList`.
+  - **SEO-Basics:** Titel und Description bleiben, `og:*` übernimmt sie. Sitemap, robots.txt, JSON-LD und OG-Bilder stehen in SEO zum Start. Das `noindex` der Rechtsseiten ist nur ein Meta-Tag.
