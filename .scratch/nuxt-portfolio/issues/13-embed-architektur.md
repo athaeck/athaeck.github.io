@@ -106,3 +106,6 @@ Der Owner exportiert dafür einen Build mit Unity 6 nach den Vorgaben oben. Gepr
 - 2026-11-15 (Agent, über [Abgleich mit athaeck-infra](20-abgleich-infra.md)): Zwei Nachträge.
   - **LFS:** Coolify holt LFS-Dateien doch, und zwar standardmäßig (`app/Models/Application.php:1808–1809` und Migration `2023_03_27_081717_create_application_settings_table.php:18`, Branch v4.x). Die Entscheidung für normale Git-Dateien bleibt trotzdem: Builds ändern sich selten, Coolify klont flach, und LFS brächte einen weiteren Weg mit, der über VPN und Port 8443 scheitern kann. [ADR-0004](../../../docs/adr/0004-web-builds-as-prebrotli-files-in-same-origin-iframes.md) nennt jetzt diesen Grund.
   - **Trailing Slash:** Für `/builds/` und die Legacy sites lässt das Plugin den Slash nicht mehr nur stehen, es erzwingt ihn: `/builds/<slug>` → 301 `/builds/<slug>/`. Das iframe auf `/builds/<slug>/index.html?lang=…` bleibt richtig.
+- 2026-11-15 (Agent, über [Impressum-Lösung](14-impressum-loesung.md)): Zwei Nachträge.
+  - **Ausstiegsleiste:** Sie liegt im Game mode außerhalb des iframes und verlinkt Impressum und Datenschutz, denn die Angaben müssen „ständig verfügbar“ sein.
+  - **Prüfpunkt Datenschutz beim ersten Web build:** Speichert Unity etwas im Browser, etwa den IndexedDB-Cache bei „Data Caching“ oder PlayerPrefs? Dann wird die Datenschutzerklärung im selben Zug ergänzt.

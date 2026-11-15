@@ -60,6 +60,14 @@ _Avoid_: Easter egg, gimmick, hero animation
 A page from the owner's GitHub Pages era that the site serves unchanged under its old path name; it is not content of the site and has no Project page of its own. When its Project gets an Embed, the old path redirects to the Project page.
 _Avoid_: Archive (that is the compact Project list), old page
 
+**Legal notice**:
+The page naming who is responsible for the site and where they can be reached by post and e-mail, as German law requires (the Impressum).
+_Avoid_: Imprint, Impressum (in English text)
+
+**Privacy policy**:
+The page telling visitors which of their data the site and its third parties process, why, for how long, and what rights they have.
+_Avoid_: Data protection declaration, privacy notice
+
 ### Person
 
 **CV**:
@@ -83,5 +91,5 @@ The owner as a person: bio, contact, portrait, languages, interests, Services an
 _Avoid_: About (that is a page), vCard
 
 **Service**:
-One discipline the owner offers, e.g. Game Programming or Narrative Design.
+One discipline the owner works in, e.g. Game Programming or Narrative Design; visitors may approach the owner about it, but the site sells no paid work.
 _Avoid_: "What I'm doing"

@@ -100,3 +100,4 @@ content/
 ## Comments
 
 - 2026-11-15 (Agent, über [Embed-Architektur](13-embed-architektur.md)): Das Feld `embed` ist geteilt und hat die Form `{ aspect: "16/9" }`. Pro Project gibt es höchstens einen Embed. Das Verzeichnis ist per Konvention `public/builds/<project-slug>/`, ein Pfad-Feld gibt es nicht. Das Poster ist das `cover`. Fehlt zu einem `embed` das Verzeichnis, bricht der Build ab. In Strapi wird `embed` eine geteilte Component mit einem Feld.
+- 2026-11-15 (Agent, über [Impressum-Lösung](14-impressum-loesung.md)): Das Profile bekommt ein neues geteiltes Feld (Arbeitsname `legalAddress`). Es enthält Name und Anschrift für Impressum und Datenschutz, also die Anschrift des Impressum-Service mit c/o, nie die Wohnadresse. Die vier Rechtsseiten lesen es in beiden Sprachen.

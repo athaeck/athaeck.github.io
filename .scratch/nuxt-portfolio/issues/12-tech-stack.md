@@ -96,3 +96,6 @@ form-action 'self'; object-src 'none'
 - 2026-11-15 (Agent, über [Abgleich mit athaeck-infra](20-abgleich-infra.md)): Zwei Nachträge.
   - Das Trailing-Slash-Plugin hat eine feste Präfixliste: `/builds/` und die Pfadnamen der Legacy sites unter `public/<alter-name>/`. Für diese Präfixe erzwingt es die Form **mit** Slash, z. B. `/Chess-Game` → 301 `/Chess-Game/`. Ohne Slash liefert Nitro die `index.html` zwar aus, aber die relativen Pfade darin brechen. Überall sonst entfernt das Plugin den Slash wie bisher. Umbenannte Altpfade sind `routeRules`-Redirects.
   - Die Umleitung von `www` macht Coolify („Redirect to non-www“), nicht die App.
+- 2026-11-15 (Agent, über [Impressum-Lösung](14-impressum-loesung.md)): Zwei Nachträge.
+  - **i18n:** Es läuft mit `detectBrowserLanguage: false`. Die Spracherkennung würde das Cookie `i18n_redirected` setzen, der eigene Code setzt aber nichts im Browser. Laut [Nuxt-Stack-Fakten](03-nuxt-stack-fakten.md) gibt es dann auch keine Weiterleitung.
+  - **CSP:** Analytics mit GTM, GA4 und Cookiebot kommt zum Start. Dafür muss der CSP auf die eigene Origin neu bewertet werden; das geschieht in [Analytics und Consent](23-analytics-und-consent.md). Auch SEO-Bausteine wie JSON-LD können ihn berühren: [SEO zum Start](25-seo-zum-start.md).
