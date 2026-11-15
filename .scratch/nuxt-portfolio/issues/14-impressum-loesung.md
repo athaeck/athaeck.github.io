@@ -93,3 +93,12 @@ Web builds bekommen zum Start keinen Abschnitt; die Seite startet ohne Embed.
 
 - 2026-11-15 (Owner): „Direkt biete ich keine Aufträge an, aber man kann sich bei mir melden, ob ich Interesse an was habe.“ In die Rechtsseiten soll alles, was wichtig ist.
 - 2026-11-15 (Owner): Zum Start kommen Cookiebot, der Google Tag Manager und Google Analytics. Wichtig sind außerdem Sitemap, Search Console und SEO, vermutlich mit JSON-LD.
+- 2026-11-15 (Agent, über [Analytics und Consent](23-analytics-und-consent.md)): Drei Nachträge.
+  - **Regel „Kein Browser-Speicher“:** Der eigene Code setzt weiter nichts. Neu kommen zwei Ausnahmen hinzu:
+    - Cookiebot speichert die Wahl in `CookieConsent`, 12 Monate lang, mit Consent-Schlüssel.
+    - GA4 setzt `_ga` und `_ga_<id>`, aber erst nach der Zustimmung.
+  - **Abschnitt 7** heißt künftig „Einwilligung und Statistik“ und bekommt die Bausteine a bis d aus Analytics und Consent:
+    - Cookiebot (Usercentrics A/S) als weiterer Auftragsverarbeiter, mit Akamai in den USA.
+    - Google als Empfänger in den USA, auf Grundlage des DPF.
+    - Der Widerruf über „Datenschutz-Einstellungen“.
+  - **„Erklärung im selben Zug“** gilt auch für GTM: Wer einen Tag oder ein Cookie hinzufügt, ändert im selben Zug die Datenschutzerklärung und die Cookie-Liste.

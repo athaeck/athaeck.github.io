@@ -15,3 +15,7 @@ Welche SEO-Bausteine kommen zum Start, und wie?
 - **Title und Description pro Seite:** Muster und Quelle im Inhaltsmodell. Das ist die Basis, die schon zum Rebuild gehört.
 
 Grundlage: [SEO-Fakten](24-seo-fakten.md).
+
+## Comments
+
+- 2026-11-15 (Agent, über [Analytics und Consent](23-analytics-und-consent.md)): Analytics misst die Google-Suche nicht. Suchbegriffe, Impressionen und Klicks aus der Suche deckt die Search Console ab. Markierte Links laufen nur pro Kanal, per `utm_source`.

@@ -68,6 +68,14 @@ _Avoid_: Imprint, Impressum (in English text)
 The page telling visitors which of their data the site and its third parties process, why, for how long, and what rights they have.
 _Avoid_: Data protection declaration, privacy notice
 
+**Consent banner**:
+The prompt on a visitor's first visit that asks whether the site may collect statistics; rejecting is as easy as allowing, and no statistics are collected before a choice.
+_Avoid_: Cookie banner, cookie popup
+
+**Privacy settings**:
+The link on every page that reopens the Consent banner so a visitor can change or withdraw their choice.
+_Avoid_: Cookie settings
+
 ### Person
 
 **CV**:

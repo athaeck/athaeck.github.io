@@ -99,3 +99,13 @@ form-action 'self'; object-src 'none'
 - 2026-11-15 (Agent, über [Impressum-Lösung](14-impressum-loesung.md)): Zwei Nachträge.
   - **i18n:** Es läuft mit `detectBrowserLanguage: false`. Die Spracherkennung würde das Cookie `i18n_redirected` setzen, der eigene Code setzt aber nichts im Browser. Laut [Nuxt-Stack-Fakten](03-nuxt-stack-fakten.md) gibt es dann auch keine Weiterleitung.
   - **CSP:** Analytics mit GTM, GA4 und Cookiebot kommt zum Start. Dafür muss der CSP auf die eigene Origin neu bewertet werden; das geschieht in [Analytics und Consent](23-analytics-und-consent.md). Auch SEO-Bausteine wie JSON-LD können ihn berühren: [SEO zum Start](25-seo-zum-start.md).
+- 2026-11-15 (Agent, über [Analytics und Consent](23-analytics-und-consent.md)): Der CSP ist neu bewertet.
+  - **Neue Hosts:** Er öffnet für Google und Cookiebot, nicht mehr nur für die eigene Origin. Die Liste pro Direktive steht in Analytics und Consent. Nonces gibt es weiter keine.
+  - **`'unsafe-inline'`:** Die Begründung „keine Einschleusestelle“ gilt nicht mehr ohne Bedingung, denn GTM ist eine Einschleusestelle mit Absicht. Sie hält nur unter diesen Regeln:
+    - Nur der Owner hat Zugang zum Container, mit 2FA.
+    - Nur Template-Tags.
+    - Kein Custom HTML und keine Custom-JS-Variablen, also kein `'unsafe-eval'`.
+  - **`/builds/**`:** Der eigene CSP für Web builds bleibt ohne Analytics-Hosts.
+  - **Neue Prüfpunkte beim ersten Build:**
+    - Die Konsole zeigt keine CSP-Fehler, bei Zustimmung, bei Ablehnung und im GTM-Preview.
+    - Lighthouse mobil ohne Zustimmung.
