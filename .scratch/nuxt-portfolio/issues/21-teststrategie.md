@@ -90,3 +90,6 @@ Geklärt im Grilling am 2026-11-15 (eine Runde mit dem Owner, alle Empfehlungen 
     - der robots.txt-Bericht der Search Console;
     - LinkedIn Post Inspector und die Vorschau bei X.
   - **Schema:** Bei Videos in `gallery` sind `poster`, `date` und `caption` Pflicht. Für den Sitemap-Hook gibt es keinen Vitest.
+- 2026-11-16 (Agent, über [Videos auf der Project page](26-videos-project-page.md)): Zwei Nachträge.
+  - **Vitest:** Die neue Inhaltsprüfung **Video** (Größe, Codec, `faststart`, keine Tonspur) bekommt eine gute und eine kaputte Fixture. Abweichend von „Server-Routen ohne Unit-Test“ bekommt die Route `/media/**` Unit-Tests für das Parsen von Range und das Pfad-Muster, denn sie ist eine Vertrauensgrenze.
+  - **Hand-Checkliste:** Der Trailer läuft auf einem echten iPhone, in Safari am Mac und in Firefox.

@@ -22,6 +22,10 @@ _Avoid_: WebGL build, player, live demo
 A Web build running inside a Project page.
 _Avoid_: Demo, iframe game, 3D scene
 
+**Trailer**:
+The first video in a Project's gallery; the Project page leads with it wherever its Embed cannot run. A Project without a video in its gallery has no Trailer.
+_Avoid_: Teaser video, clip, showreel
+
 **Featured project**:
 A Project the site leads with; the owner curates which Projects are featured and in what order.
 _Avoid_: Highlight, top project
