@@ -41,7 +41,7 @@ Geklärt im Grilling am 2026-11-15 (zwei Runden mit dem Owner). Neuer Glossar-Be
 - Die Abschnitte sind lokalisiert (`customRoutes: 'config'`, laut [Nuxt-Stack-Fakten](03-nuxt-stack-fakten.md)). Der Slug eines Projects ist der Dateiname aus dem [Inhaltsmodell](09-inhaltsmodell.md), in allen Sprachen gleich, klein, kebab-case, ASCII.
 - Kanonisch ohne Trailing Slash.
 - **Slugs sind ab dem ersten Release eingefroren**, weil das Spiel darauf verlinkt. Umbenennen geht nur mit 301 über `routeRules`.
-- **CV-PDFs:** `/downloads/nick-haecker-lebenslauf.pdf` (DE) und `/downloads/nick-haecker-cv.pdf` (EN), stabile URLs. Angeboten werden sie nur oben auf der CV-Seite, beide Sprachen auf beiden Sprachseiten: die eigene zuerst.
+- **CV-PDFs** (revidiert am 2026-11-15, s. Comments): Sie liegen **nicht** unter `public/` und haben keine Download-URL, die man per GET abrufen kann. Oben auf der CV-Seite steht pro Sprache ein Button „PDF herunterladen“ in einem `<form method="post" action="/downloads/cv">` mit einem versteckten Feld `lang`. Der Server antwortet mit dem PDF als `Content-Disposition: attachment` (Dateinamen `nick-haecker-lebenslauf.pdf` bzw. `nick-haecker-cv.pdf`) und `X-Robots-Tag: noindex`. Ein GET auf die Route leitet per 303 auf die CV-Seite. Das geht ohne JavaScript und ohne Drittdienst. Beide Sprachen stehen auf beiden Sprachseiten, die eigene zuerst.
 
 **Sprachen**
 - Jede Seite gibt es in beiden Sprachen, auch Impressum und Datenschutz. **Fehlt eine Sprachdatei, bricht der Build ab.** Halb übersetzt geht nichts live.
@@ -59,7 +59,7 @@ Geklärt im Grilling am 2026-11-15 (zwei Runden mit dem Owner). Neuer Glossar-Be
 - Auch am Handy sind alle Punkte immer sichtbar, **ohne Hamburger**. Ob Kopfleiste oder Tab-Leiste unten, entscheidet die Design-Richtung.
 - Der aktive Punkt bekommt `aria-current="page"`. Ganz oben steht ein Skip-Link „Zum Inhalt“.
 - **Footer** auf jeder Seite gleich:
-  - der Kontaktblock: E-Mail als sichtbarer, kopierbarer Text mit `mailto:`, dazu GitHub, LinkedIn, itch.io und Stuttgart;
+  - der Kontaktblock: die E-Mail-Adresse **nirgends im Klartext** (revidiert am 2026-11-15, s. Comments). Ein Link „E-Mail schreiben“ geht auf die Server-Route `/mail` (eine für beide Sprachen), die per 302 auf `mailto:` weiterleitet; das geht ohne JavaScript. Dazu ein Button „Adresse kopieren“, der nur mit JavaScript erscheint, die verschlüsselt im Markup liegende Adresse erst beim Klick entschlüsselt, kopiert und anzeigt. Außerdem GitHub, LinkedIn, itch.io und Stuttgart;
   - Links auf Impressum und Datenschutz;
   - der Sprachumschalter.
 
@@ -87,7 +87,7 @@ Geklärt im Grilling am 2026-11-15 (zwei Runden mit dem Owner). Neuer Glossar-Be
 
 **Skills**
 - Sie stehen auf der CV-Seite, gruppiert nach `group`, jeder mit seiner Zahl („Unity · 6 Projects“).
-- Ein `<details>` klappt die belegenden Projects und CV entries als Links auf. Das geht ohne JavaScript.
+- Antippen öffnet die belegenden Projects und CV entries als Links in einer Ebene über der Seite (HTML-Popover per `popovertarget`, revidiert am 2026-11-15, s. Comments). Das geht ohne JavaScript, und der Screen wächst nicht.
 - Jede Project page listet ihre Skills mit Links auf `/lebenslauf#skill-<slug>`.
 - Keine Skill-Seiten, keine Filter.
 
@@ -126,3 +126,15 @@ Geklärt im Grilling am 2026-11-15 (zwei Runden mit dem Owner). Neuer Glossar-Be
 - [Impressum-Lösung](14-impressum-loesung.md): Es gibt eine EN-Fassung unter `/en/legal-notice` und `/en/privacy`.
 - Nebel: Das Layout von Project page und CV-Seite, also auch die Reihenfolge der Sektionen auf der CV-Seite, hängt nur noch an der Design-Richtung.
 - Out of scope (Phase 2): Der Name der Spiel-Route gehört zum Spiel-Effort.
+
+## Comments
+
+- 2026-11-15 (Owner): Die E-Mail-Adresse soll nicht im Freitext stehen, das zieht Bots an.
+- 2026-11-15 (Agent): Kontaktblock revidiert (s. Footer im Answer). Beleg: In der Langzeitmessung von Spencer Mortensen (https://spencermortensen.com/articles/email-obfuscation/, Stand 12.11.2026; je Technik eine eigene Adresse) fanden alle 979 Spammer einen ungeschützten `mailto:`-Link, eine HTTP-Weiterleitung und per Klick freigegebene Adressen blockten 100 %. Im Prototyp (Variante D) umgesetzt. Folgen:
+  - [Impressum-Lösung](14-impressum-loesung.md): Klären, ob die Adresse ins Impressum muss und ob dort Weiterleitung oder Klick-Freigabe reicht.
+  - [Build-Spike](16-build-spike.md): Prüfen, ob die 302-Weiterleitung auf `mailto:` funktioniert und wie Nitro sie beim Prerender behandelt.
+  - **Offen (Owner):** Eine eigene Kontaktadresse als Alias, z. B. auf athaeck.de mit Weiterleitung. Die bisherige Adresse ist schon lange öffentlich (alte Live-Seite auf `main`, außerdem `content-inventory.md` auf dem gepushten Branch `multi-language-nuxt`) und dürfte bei Spammern längst bekannt sein. Der Schutz wirkt also nur für eine neue Adresse.
+  - **Offen (Owner):** Das öffentliche CV-PDF enthält die Adresse als Text. Darin entweder den Alias eintragen oder die Adresse weglassen.
+- 2026-11-15 (Owner): Kein Alias, die bisherige Adresse bleibt. Im CV-PDF bleibt die Adresse stehen, aber der Download soll gegen Bots gesichert sein.
+- 2026-11-15 (Agent): CV-PDFs revidiert (s. Answer): Download nur per Formular-POST statt über eine feste URL. Annahme, nicht gemessen: Harvester folgen Links per GET und schicken keine Formulare ab. Ein gezielt gebauter Bot kommt weiterhin durch. Die stärkere Stufe wäre ein selbst gehosteter Proof-of-Work vor dem Download (z. B. ALTCHA); der bräuchte JavaScript und bleibt deshalb aus. Drittdienste wie Turnstile oder reCAPTCHA scheiden aus, weil sie Daten an Dritte schicken. Folge: Es gibt keinen direkten Link mehr auf das PDF, den man z. B. in eine Bewerbung kopieren könnte. Die Regel „nirgends im Klartext“ deckt damit nur die Seite selbst; Alt-Seite und PDF enthalten die Adresse weiter.
+- 2026-11-15 (Owner, über [Ticket 19](19-layout-uebrige-seiten.md)): Die Belege eines Skills öffnen sich als Popover statt als `<details>`, damit der Skills-Screen bei 100 vh bleibt.

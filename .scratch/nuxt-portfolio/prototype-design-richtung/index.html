@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+  PROTOTYP, Wegwerf-Code. Nicht in main, nicht deployen.
+  Frage (Ticket „Design-Richtung und Signature-Moment“): Wie sieht die Seite aus, wie fühlt sie sich an,
+  und welcher eine Signature-Moment hebt sie ab, ohne den 10-Sekunden-Test zu brechen?
+  Runde 1: A, B, C. Runde 2 (Feedback 15.11.): D, E als Weiterentwicklung von B. Runde 3: D überarbeitet (Chronoskop, eigene Project page). Runde 4: Project page D je Kategorie ein Screen. Runde 5 (Ticket 19): Projects, Lebenslauf und Über mich, nur in D. Varianten umschaltbar per ?variant=A|B|C|D|E&page=home|projects|project|cv|about|404&device=phone; Varianten ohne eigene Seite zeigen ihre Home.
+  Start: index.html doppelklicken. Tasten: ← → Variante wechseln, H Umschalter ein/aus.
+  Bewusst ausgelassen: Nuxt, i18n, „ohne JavaScript lesbar“ (die Varianten rendern per JS), Bildoptimierung.
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PROTOTYP · Design-Richtung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<style>
+  .proto-bar{position:fixed;right:16px;bottom:16px;z-index:9999;display:flex;align-items:center;gap:4px;padding:6px;background:#111;color:#fff;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12);font:500 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .proto-bar button{all:unset;cursor:pointer;padding:7px 10px;border-radius:999px;color:#bbb;white-space:nowrap}
+  .proto-bar button:hover{background:#262626;color:#fff}
+  .proto-bar button[aria-pressed="true"]{background:#fff;color:#111}
+  .proto-bar button:focus-visible{outline:2px solid #ff0;outline-offset:1px}
+  .proto-label{padding:0 6px;min-width:120px;text-align:center}
+  .proto-label b{color:#ff0;margin-right:4px}
+  .proto-sep{width:1px;height:18px;background:#333;margin:0 4px}
+  .proto-info{position:fixed;right:16px;bottom:72px;z-index:9999;width:min(440px,calc(100vw - 32px));max-height:60vh;overflow:auto;background:#111;color:#ddd;border-radius:14px;padding:16px 18px;box-shadow:0 8px 30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  .proto-info h4{margin:0 0 8px;color:#ff0;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .proto-info ul{margin:0;padding-left:18px}
+  .proto-info li{margin:4px 0}
+  .proto-hidden .proto-bar,.proto-hidden .proto-info{display:none}
+  body.proto-vC:not(.proto-phone) .proto-bar{bottom:96px}
+  body.proto-vC:not(.proto-phone) .proto-info{bottom:152px}
+  @media (max-width:760px){.proto-bar{top:8px;bottom:auto!important;right:8px;font-size:12px;max-width:calc(100vw - 16px);overflow-x:auto;scrollbar-width:none}.proto-info{top:56px;bottom:auto!important}.proto-bar .proto-wide{display:none}}
+  .proto-phone{min-height:100vh;margin:0;display:grid;place-items:center;background:#2a2a2e;padding:24px 0 90px}
+  .proto-phone iframe{width:390px;height:844px;border:0;border-radius:44px;box-shadow:0 0 0 10px #0c0c0e,0 0 0 11px #444,0 30px 80px rgba(0,0,0,.6);background:#fff}
+  .proto-phone p{color:#999;font:13px system-ui,sans-serif;margin:14px 0 0;text-align:center}
+</style>
+<style id="variant-css"></style>
+</head>
+<body>
+<div id="app"></div>
+<script src="data.js"></script>
+<script src="a.js"></script>
+<script src="b.js"></script>
+<script src="c.js"></script>
+<script src="de.js"></script>
+<script>
+(() => {
+  const KEYS = ['A', 'B', 'C', 'D', 'E'];
+  const PAGES = [['home', 'Home'], ['projects', 'Projects'], ['project', 'Project page'], ['cv', 'Lebenslauf'], ['about', 'Über mich'], ['404', '404']];
+  const q = new URLSearchParams(location.search);
+  const state = {
+    variant: KEYS.includes(q.get('variant')) ? q.get('variant') : 'A',
+    page: PAGES.some(p => p[0] === q.get('page')) ? q.get('page') : 'home',
+    device: q.get('device') === 'phone' ? 'phone' : 'desktop',
+  };
+  const embed = q.get('embed') === '1';
+  const V = window.VARIANTS[state.variant];
+
+  // Links innerhalb einer Variante (Karten, Zurück, Nächstes) bleiben in derselben Variante.
+  window.link = (page, hash = '') => '?' + new URLSearchParams({ variant: state.variant, page, ...(embed ? { embed: '1' } : {}) }) + hash;
+
+  function go(change) {
+    const s = { ...state, ...change };
+    const p = new URLSearchParams({ variant: s.variant, page: s.page });
+    if (s.device === 'phone') p.set('device', 'phone');
+    location.search = '?' + p;
+  }
+
+  const app = document.getElementById('app');
+  document.body.classList.add('proto-v' + state.variant);
+
+  if (state.device === 'phone' && !embed) {
+    document.body.className = 'proto-phone proto-v' + state.variant;
+    app.innerHTML = `<div><iframe title="Handy-Vorschau" src="${link(state.page).replace('?', '?embed=1&')}"></iframe><p>Handy-Vorschau 390 × 844 · Variante ${state.variant}</p></div>`;
+  } else {
+    document.getElementById('variant-css').textContent = V.css;
+    app.innerHTML = V.render(state.page, D);
+    V.mount && V.mount(state.page, app, D);
+  }
+
+  if (embed) return;
+
+  const bar = document.createElement('div');
+  bar.className = 'proto-bar';
+  bar.setAttribute('role', 'toolbar');
+  bar.setAttribute('aria-label', 'Prototyp-Umschalter');
+  bar.innerHTML = `
+    <button data-step="-1" aria-label="Vorige Variante">◀</button>
+    <span class="proto-label"><b>${state.variant}</b>${V.name}</span>
+    <button data-step="1" aria-label="Nächste Variante">▶</button>
+    <span class="proto-sep"></span>
+    ${PAGES.map(([k, l]) => `<button data-page="${k}" aria-pressed="${state.page === k}">${l}</button>`).join('')}
+    <span class="proto-sep proto-wide"></span>
+    <button class="proto-wide" data-device="desktop" aria-pressed="${state.device === 'desktop'}">Desktop</button>
+    <button class="proto-wide" data-device="phone" aria-pressed="${state.device === 'phone'}">Handy</button>
+    <button data-info aria-expanded="false" aria-label="Was diese Variante entscheidet">i</button>`;
+  document.body.appendChild(bar);
+
+  const info = document.createElement('div');
+  info.className = 'proto-info';
+  info.hidden = true;
+  info.innerHTML = `<h4>${state.variant} · ${V.name}</h4><ul>${V.notes.map(n => `<li>${n}</li>`).join('')}</ul>`;
+  document.body.appendChild(info);
+
+  const step = d => go({ variant: KEYS[(KEYS.indexOf(state.variant) + d + KEYS.length) % KEYS.length] });
+  bar.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.step) step(+b.dataset.step);
+    else if (b.dataset.page) go({ page: b.dataset.page });
+    else if (b.dataset.device) go({ device: b.dataset.device });
+    else if ('info' in b.dataset) { info.hidden = !info.hidden; b.setAttribute('aria-expanded', String(!info.hidden)); }
+  });
+  addEventListener('keydown', e => {
+    const t = e.target;
+    if (t.closest && t.closest('input, textarea, select, [contenteditable], [role="slider"]')) return;
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'h' || e.key === 'H') document.documentElement.classList.toggle('proto-hidden');
+  });
+})();
+</script>
+</body>
+</html>

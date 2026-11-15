@@ -93,7 +93,7 @@ Markierungen: **⚠ Widerspruch** zwischen den Quellen · **✗ Fehler** in eine
 | HFU | M.Sc. Medieninformatik (EN: Computer Science in Media) | Mär 2023 – Aug 2025 | 1,6 | Kurse: ML, Deep Learning, Algorithmen, Datenanalyse, Game Studies, AR, VR, Computer Vision; ⚠ „Netzwerke“ steht im CV beim Master, auf der Live-Seite beim Bachelor |
 | HFU | B.Sc. Medieninformatik | Mär 2019 – Feb 2023 | 1,5 | Kurse: Mathe, Physik, BWL, Java, Webentwicklung, Computergrafik, Computer Vision, Game Development, 3D-Modellierung, Game Analysis, Game Narration |
 | Evangelisches Mörike-Gymnasium Stuttgart | Allgemeine Hochschulreife | 2009 – 2017 | 3,4 | ✗ beide Quellen: „Evenagelisches Mörike Gymansium“ |
-| August-Lämmle-Schule Leonberg | Grundschule | 2005 – 2009 | – | |
+| August-Lämmle-Schule Leonberg | Grundschule | 2005 – 2009 | – | entfällt, kein CV entry (Owner, 2026-11-15) |
 
 Noten erscheinen laut Grundsatzentscheidung nur im CV-PDF (Highlight wie Bachelorarbeit 1,1 optional auf der Seite).
 

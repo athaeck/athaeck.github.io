@@ -28,3 +28,7 @@ Details mit Quellen: Branch `research/unity-webgl-embed-fakten`, Datei `.scratch
   - **A:** `routeRules`-Header. Das funktioniert nachweislich, weil Route Rules zuerst laufen. Offen ist, ob Patterns nach Dateiendung matchen.
   - **B (einfachster Weg):** Unity-Kompression **Disabled** + Nitro `compressPublicAssets`. Nitro erzeugt die `.br/.gz`-Varianten selbst und liefert sie mit korrektem Header aus, so wie Unity es für „static compression on the hosting server“ empfiehlt. Das muss ein Test mit einem echten Build bestätigen.
 - **Offen:** typische Build-Größen, offizielle Doku zu Embedding und Quit, Header-Bedarf für WebGPU.
+
+## Comments
+
+- 2026-11-15 (Agent, über [Build-Spike](16-build-spike.md)): Korrektur zu „Nitro“. nitropack 2.13.6 liefert eine wörtliche `.wasm.br`-Datei **mit** `Content-Encoding: br` und `Content-Type: application/wasm` aus (gemessen; Quelltext `rollup/index.mjs:1249,1263`, `runtime/internal/static.mjs:80`). Fix B ist auf HTTP-Ebene bestätigt. Fix A matcht nicht nach Dateiendung, nur per Verzeichnis.
