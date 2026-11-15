@@ -32,12 +32,13 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - [Inhaltsmodell](issues/09-inhaltsmodell.md): Typen Project, CV entry, Skill, Profile, Page. Fakten liegen in einer geteilten YAML-Datei, Texte in Markdown pro Sprache ([ADR-0002](../../docs/adr/0002-shared-facts-and-per-language-text-files.md)). `kind` und `genre` ersetzen die Kategorien. Projects haben Phasen und Learnings, Skills zeigen Belege statt Balken, Featured ist eine geordnete Liste im Profile. Ready Prepper One wird kein Project, sondern die „Aktuell“-Zeile im Profile.
 - [Vorlagen-Sichtung](issues/08-vorlagen-sichtung.md): Funde des Owners liegen in [vorlagen-sichtung.md](vorlagen-sichtung.md). Der Owner wünscht zwei Modi: am Desktop eine Spielwelt mit Missionen, am Handy eine App. Das steht in Spannung zu (b) und wird in [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md) geklärt. Learnings und Devlog-Links ergänzen das Inhaltsmodell; Exo ist die Wunschschrift.
 - [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md): Die Inhaltsseite bleibt auf allen Geräten kanonisch, (b) gilt weiter. Darüber liegt ein optionaler Spielmodus nur am Desktop (Unity WebGL) mit eigenen Inhalten; er ist nur über feste URLs und die Sprache an die Seite gekoppelt. Am Handy gibt es keinen eigenen Modus und keine PWA. Der Signature-Moment weist auf den Spielmodus hin. Das Spiel selbst ist Phase 2, die Seite startet ohne.
+- [Seitenstruktur und Navigation](issues/10-seitenstruktur.md): Seiten sind Home, Projects mit Archiv, eine Project page für jedes Project, CV, About, Impressum, Datenschutz und 404. Kontakt ist ein Footer-Block. Die Abschnitte sind lokalisiert (`/projekte` · `/en/projects`), die Slugs gemeinsam und eingefroren. Fehlt eine Sprache, bricht der Build ab. Die Navigation hat keinen Hamburger. Auf der Home stehen die Featured projects und die Featured achievements (neues Profile-Feld `featuredAchievements`). Das Archiv hat keine Filter. Den Namen der Spiel-Route wählt der Spiel-Effort.
 
 ## Not yet specified
 
 - **Visuelle Identität:** Farben, Typografie, Dark/Light, Motion. Der Owner wünscht Exo (OFL, variabel); Orbitron ist nicht gesetzt. Der Hell-Dunkel-Kontrast von watson.la gefällt. Wird schärfer nach dem Design-Prototyp.
 - **Technik für den Signature-Moment:** CSS, Canvas 2D, three.js/TresJS oder GSAP? Hängt am Prototyp. Der Spielmodus ist auf Unity WebGL festgelegt.
-- **Layout von Project page und CV-Seite** inkl. Print-Stylesheet. Hängt an Seitenstruktur und Design-Richtung.
+- **Layout von Project page und CV-Seite** inkl. Print-Stylesheet und der Reihenfolge der Sektionen auf der CV-Seite. Die Plätze der Inhalte stehen in [Seitenstruktur und Navigation](issues/10-seitenstruktur.md). Es hängt nur noch an der Design-Richtung.
 - **Embed-UX:** Poster, Click-to-play, Fallback auf Mobil, Ladeanzeige. Hängt an der Embed-Architektur.
 - **Teststrategie** über Lint und Typecheck hinaus. Hängt am Tech-Stack.
 - **Cutover:** DNS für athaeck.de, GitHub Pages abschalten, Weiterleitung von athaeck.github.io, Repo-Umzug und Umbenennung in Forgejo. Die Web-Builds unter `athaeck.github.io/A-fraction-of-time/` und `athaeck.github.io/VisualNovel/` dürfen dabei nicht brechen, oder sie ziehen mit um. Hängt an der Pipeline.
@@ -54,7 +55,7 @@ Eine übergabefähige Spec (`.scratch/nuxt-portfolio/spec.md` + ADRs in `docs/ad
 - **Tracking und Analytics** (z. B. Umami auf eigener Infra).
 - **Blog, Testimonials und Clients** als Sektionen.
 - **Einbau eines konkreten Unity-Spiels.** Die Embed-Architektur ist in scope.
-- **Das Spiel im Spielmodus:** Welt, Fernrohr-Mechanik, Inhalte und Build sind ein eigener Effort nach dem ersten Rebuild. Die Spec legt nur den Rahmen fest. Die Konzeptnotiz steht in [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md).
+- **Das Spiel im Spielmodus:** Welt, Fernrohr-Mechanik, Inhalte und Build sind ein eigener Effort nach dem ersten Rebuild. Die Spec legt nur den Rahmen fest. Die Konzeptnotiz steht in [Spielmodus und Mobil-Modus](issues/18-spielmodus-und-mobil-modus.md). Auch der Name der Spiel-Route samt Nav-Beschriftung gehört dazu; die Regeln dafür stehen in [Seitenstruktur und Navigation](issues/10-seitenstruktur.md).
 - **CV-PDF aus den Seiteninhalten generieren.**
 
 **Nicht Teil dieses Projekts:** Aufbau der Infrastruktur selbst (Forgejo, Coolify, Registry). Das ist ein eigenes Vorhaben des Owners.

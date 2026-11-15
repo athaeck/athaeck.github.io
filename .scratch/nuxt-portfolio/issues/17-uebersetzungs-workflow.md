@@ -14,3 +14,5 @@ Wie läuft die Übersetzung konkret ab? Feststeht: KI-Vorübersetzung, der Owner
 - **Veraltete Übersetzungen:** Wie fällt auf, dass eine Übersetzung nach einer Änderung nicht mehr stimmt? Braucht das ein Feld im Modell?
 
 Grundlage: das [Inhaltsmodell](09-inhaltsmodell.md). Übersetzt werden genau die Felder der Markdown-Dateien pro Sprache. Listen mit Text wie `phases` tragen ihre Fakten in jeder Sprache mit.
+
+Vorgabe aus [Seitenstruktur und Navigation](10-seitenstruktur.md): Fehlt zu einem Eintrag eine Sprachdatei, bricht der Build ab. Ein neuer Eintrag geht also erst live, wenn beide Sprachen da sind. Einen Fallback auf die andere Sprache gibt es nicht.

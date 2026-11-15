@@ -66,6 +66,10 @@ _Avoid_: Position, station, milestone
 A CV entry for an award, showcase, certificate or participation; it may point to the Project it concerns.
 _Avoid_: Award (as the umbrella term), honour
 
+**Featured achievement**:
+An Achievement the site leads with on its home page; the owner curates which Achievements are featured and in what order.
+_Avoid_: Highlight, top award
+
 **Profile**:
 The owner as a person: bio, contact, portrait, languages, interests, Services and what they are working on now.
 _Avoid_: About (that is a page), vCard
