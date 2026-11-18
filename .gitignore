@@ -1,3 +1,8 @@
 # Raw CV with private data (address, phone): never commit
 docs/about-me/
 docs/ona-tech/
+node_modules
+.nuxt
+.output
+.data
+node_modules
