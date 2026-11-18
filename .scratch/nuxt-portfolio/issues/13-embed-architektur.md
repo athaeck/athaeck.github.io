@@ -110,3 +110,9 @@ Der Owner exportiert dafür einen Build mit Unity 6 nach den Vorgaben oben. Gepr
   - **Ausstiegsleiste:** Sie liegt im Game mode außerhalb des iframes und verlinkt Impressum und Datenschutz, denn die Angaben müssen „ständig verfügbar“ sein.
   - **Prüfpunkt Datenschutz beim ersten Web build:** Speichert Unity etwas im Browser, etwa den IndexedDB-Cache bei „Data Caching“ oder PlayerPrefs? Dann wird die Datenschutzerklärung im selben Zug ergänzt.
 - 2026-11-16 (Agent, über [Videos auf der Project page](26-videos-project-page.md)): Ohne passendes Gerät zeigt die Project page statt des Embeds den Trailer, danach den ersten Link. Für Videos streamt eine eigene Route `/media/**` mit Range aus `media/`, nicht aus `public/`. Beobachtung, nicht entschieden: Dieselbe Technik könnte auch `/builds/**` streamen. Dann fiele der RAM-Grund für das Budget der Embeds weg, aber die Route müsste `.br` samt `Content-Encoding` selbst ausliefern.
+- 2026-11-17 (Agent, über [Embed-UX](27-embed-ux.md)): Der Embed läuft im *Theater*, einem modalen Dialog über der Project page. Daraus folgt:
+  - **Vollbild:** Die Seite ruft `requestFullscreen()` auf der Hülle des iframes auf. Das iframe braucht kein `allow="fullscreen"` mehr, und das Template hat keinen Vollbild-Knopf.
+  - **Template:** Ladeanzeige, Steuerung, zwei Fehler-Screens und „Klicken zum Spielen“ sind festgelegt, in Exo als eigener Datei im Build-Verzeichnis (zählt zum Budget).
+  - **Neue Vorgabe:** Tab muss das Spiel verlassen können (WCAG 2.1.2). Dazu kommen Prüfpunkt 6 (Tab) und Prüfpunkt 7 (Ton erst nach Klick, UNVERIFIED).
+  - **Größe:** Die Größe im Teaser kommt aus der Summe der Budget-Prüfung, `embed` bleibt `{ aspect }`. Ein Feld für die Steuerung gibt es nicht.
+  - **Cover:** Das Poster ist der Teaser. `cover` dient dort ohnehin als Hintergrund, eine eigene Poster-Fläche gibt es nicht.

@@ -7,23 +7,31 @@ Personal portfolio of Nick Philipp Häcker: presents game and full-stack work to
 ### Projects
 
 **Project**:
-A single piece of work shown on the site (game, film, paper, tool, asset).
+A single piece of work shown on the site (game, research, tool, film, asset).
 _Avoid_: Portfolio item, work, reference
 
 **Project page**:
 The detail page of one Project: role, tech, problem, media, links; the place an Embed lives.
 _Avoid_: Case study, detail view
 
+**Teaser**:
+The first Screen of a Project page: cover, title, summary, main button and facts; it is also the poster from which the Theater opens.
+_Avoid_: Hero, poster
+
 **Web build**:
 An interactive build (scene or game) made for the site, hosted by it and running in the browser, whatever engine made it (Unity, FUDGE, three.js); it is shown either as an Embed or as the Game mode. A third-party viewer, a live demo hosted elsewhere or a Legacy site is not a Web build; a Project only links to it.
 _Avoid_: WebGL build, player, live demo
 
 **Embed**:
-A Web build running inside a Project page.
+A Web build running inside a Project page; it plays in the page's Theater.
 _Avoid_: Demo, iframe game, 3D scene
 
+**Theater**:
+The layer over a Project page in which its Embed plays; the visitor opens it, closing it returns to the page and ends the Embed.
+_Avoid_: Lightbox, modal, player
+
 **Trailer**:
-The first video in a Project's gallery; the Project page leads with it wherever its Embed cannot run. A Project without a video in its gallery has no Trailer.
+The first video in a Project's gallery; the Project page leads with it unless an Embed can run on the visitor's device. A Project without a video in its gallery has no Trailer.
 _Avoid_: Teaser video, clip, showreel
 
 **Featured project**:
@@ -53,15 +61,23 @@ _Avoid_: Competence, technology
 ### Site
 
 **Game mode**:
-An optional, desktop-only way through the site's content as a playable world; it sits on top of the site's pages and never replaces them.
+An optional, desktop-only playable world on top of the site's pages; it has its own content, links into the site's pages and never replaces them.
 _Avoid_: Game world, playable portfolio, mobile mode
 
 **Signature moment**:
 The one playful moment with game character on the site's pages; it works without the Game mode and points towards it.
 _Avoid_: Easter egg, gimmick, hero animation
 
+**Chronoscope**:
+The brass telescope of the Signature moment: turning its four letter rings to a code word brings its lens into focus and reveals what comes next; the 404 page reuses it.
+_Avoid_: Spyglass, telescope, Fernrohr
+
+**Screen**:
+One content category of a page, at least one viewport high; on a phone its parts swipe sideways.
+_Avoid_: Step, section, slide
+
 **Legacy site**:
-A page from the owner's GitHub Pages era that the site serves unchanged under its old path name; it is not content of the site and has no Project page of its own. When its Project gets an Embed, the old path redirects to the Project page.
+A page from the owner's GitHub Pages era, kept unchanged under its old path name by a separate static server on its own subdomain; it is not content of the site and has no Project page of its own. When its Project gets an Embed, the old page redirects to the Project page.
 _Avoid_: Archive (that is the compact Project list), old page
 
 **Legal notice**:
@@ -77,7 +93,7 @@ The prompt on a visitor's first visit that asks whether the site may collect sta
 _Avoid_: Cookie banner, cookie popup
 
 **Privacy settings**:
-The link on every page that reopens the Consent banner so a visitor can change or withdraw their choice.
+The button on every page that reopens the Consent banner so a visitor can change or withdraw their choice; it appears only with JavaScript, since without it there is no banner.
 _Avoid_: Cookie settings
 
 ### Person
@@ -99,7 +115,7 @@ An Achievement the site leads with on its home page; the owner curates which Ach
 _Avoid_: Highlight, top award
 
 **Profile**:
-The owner as a person: bio, contact, portrait, languages, interests, Services and what they are working on now.
+The owner as a person: bio, contact, portrait, languages, interests, Services, the stations of their timeline, what they are working on now and what comes next.
 _Avoid_: About (that is a page), vCard
 
 **Service**:
@@ -115,3 +131,7 @@ _Avoid_: Original language, master language
 **Unreviewed text**:
 A text written by AI, as a draft or a translation, that the owner has not read yet; it never goes live.
 _Avoid_: Draft, machine translation
+
+**Content check**:
+A check of the site's content during the build that stops the release when it fails, e.g. a missing language or an Unreviewed text.
+_Avoid_: Validation, lint

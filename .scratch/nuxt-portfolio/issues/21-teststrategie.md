@@ -93,3 +93,9 @@ Geklärt im Grilling am 2026-11-15 (eine Runde mit dem Owner, alle Empfehlungen 
 - 2026-11-16 (Agent, über [Videos auf der Project page](26-videos-project-page.md)): Zwei Nachträge.
   - **Vitest:** Die neue Inhaltsprüfung **Video** (Größe, Codec, `faststart`, keine Tonspur) bekommt eine gute und eine kaputte Fixture. Abweichend von „Server-Routen ohne Unit-Test“ bekommt die Route `/media/**` Unit-Tests für das Parsen von Range und das Pfad-Muster, denn sie ist eine Vertrauensgrenze.
   - **Hand-Checkliste:** Der Trailer läuft auf einem echten iPhone, in Safari am Mac und in Firefox.
+- 2026-11-17 (Agent, über [Embed-UX](27-embed-ux.md)): Sobald es den ersten Embed gibt, ergänzt die Hand-Checkliste das *Theater*:
+  - per Tastatur öffnen;
+  - Tab erreicht „← Zurück zur Seite“ und Vollbild;
+  - Esc schließt vor dem Klick ins Spiel, danach kehrt der Fokus zum Button zurück;
+  - Vollbild füllt den Bildschirm;
+  - in Chrome, Firefox und Safari.

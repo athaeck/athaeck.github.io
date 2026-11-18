@@ -132,3 +132,11 @@ Entschieden vom Owner am 2026-11-15 in vier Runden. Die Fakten kamen vorher ohne
   - [Embed-Architektur](13-embed-architektur.md)
   - [Build- und Deploy-Pipeline](15-build-deploy-pipeline.md)
 - Kommentar-Vorschläge in `athaeck-infra`: infra-18 (Portfolio) und infra-19 (Übernommene Seiten).
+
+## Comments
+
+- 2026-11-17 (Owner und Agent, beim Zusammenführen der [Spec](../spec.md)): Die Ablage der Legacy sites ist revidiert.
+  - **Neu:** Legacy sites liegen **nicht** mehr im Webseiten-Repo unter `public/<alter-name>/`. Ein eigener statischer nginx-Dienst liefert sie unverändert unter ihren alten Pfadnamen auf einer eigenen Subdomain aus (Arbeitsname `alt.athaeck.de`; den Namen legt die Infra fest). Das Portfolio verlinkt sie nur per `play`.
+  - **Gründe:** Sie sind kein Inhalt der Seite. nginx kann Range und Streaming (Spike oben: 137 von 137 Prüfungen, 14 → 41 MiB bei 20 parallelen Downloads), Nitro nicht. Die eigene Origin hält altes JavaScript von den Cookies der Seite fern, und der strenge CSP braucht keine Ausnahme.
+  - **Folgen fürs Portfolio:** Das Trailing-Slash-Plugin behält nur `/builds/`. Die Altnamen bleiben reserviert, und `athaeck.de/<alter-name>/**` leitet per 301 auf denselben Pfad der Subdomain. Free3D bleibt trotzdem draußen; `/free3d.github.io/**` leitet auf seine Project page.
+  - **Infra:** Der Dienst gehört zur Infra. Der Kommentar-Vorschlag steht in infra-19.

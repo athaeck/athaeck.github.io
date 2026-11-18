@@ -6,5 +6,5 @@ Every Web build (Embed or Game mode) is committed as a Unity "Brotli" release bu
 
 - No gzip fallback, and `nuxt dev` (Vite sets no `Content-Encoding`) or plain-HTTP Firefox cannot run a Web build; production is HTTPS-only, where every WebGL 2 browser decodes Brotli. Local integration tests use Chromium against the production container.
 - Nitro reads each file fully into memory per request (no streaming, no `Range`), so a visitor who is loading costs about the build's size in server RAM. Hence the budget: 50 MB per Embed, 100 MB for the Game mode, enforced by the build. A larger build leaves the image (registry artefact or streaming static server) rather than raising the budget.
-- Headers are set per directory only (`routeRules` cannot match file extensions): `/builds/**` gets its own CSP, so loader needs such as `blob:` never loosen the site's CSP.
+- Headers are set per directory only (`routeRules` cannot match file extensions): `/builds/**` gets its own CSP, so loader needs such as `'wasm-unsafe-eval'` or `blob:` never loosen the site's CSP.
 - Only release builds are committed; each one stays in Git history for good.

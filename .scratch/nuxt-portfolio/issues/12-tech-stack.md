@@ -114,3 +114,4 @@ form-action 'self'; object-src 'none'
   - robots.txt liegt statisch in `public/`.
   - JSON-LD ist handgeschrieben, die OG-Bilder kommen per ipxStatic.
   - Der CSP bleibt, wie er ist: JSON-LD ist ein Datenblock, und die OG-Bilder liegen auf der eigenen Origin.
+- 2026-11-17 (Agent, über [Embed-UX](27-embed-ux.md)): `fullscreen=(self)` in der Permissions-Policy bleibt, aber aus einem anderen Grund. Vollbild fordert jetzt die Seite selbst an, und zwar für die Hülle des iframes im Theater. Das iframe hat kein `allow="fullscreen"` mehr.

@@ -4,6 +4,7 @@ Each content entry is one shared YAML file for facts (dates, links, references, 
 
 ## Consequences
 
-- Strapi localizes components (lists of sub-objects) only as a whole. Any list that contains text (`phases`, `gallery`, `services`, `languages`) therefore lives entirely in the language files, and its facts, such as phase dates or gallery image files, are duplicated per language.
+- Strapi localizes components (lists of sub-objects) only as a whole. Any list that contains text (`phases`, `gallery`, `contributions`, `learnings`, `services`, `languages`, `interests`, `timeline`, `next`) therefore lives entirely in the language files, and its facts, such as phase dates or gallery image files, are duplicated per language.
+- Because duplicated facts can drift, a Content check compares every text list across the two languages: the same number of entries and the same facts, or the build stops.
 - A single image stays shared; its alt text is a separate localized field next to it.
 - Skill has no language files; Page has no shared file.
